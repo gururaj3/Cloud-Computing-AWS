@@ -35,6 +35,7 @@ function submitSearch(e) {
 function submitVoice(file) {
 
     console.log(file);
+    console.log(file.type)
     var file_name = "Recording.wav";
 
     var apigClient = apigClientFactory.newClient();
@@ -43,18 +44,20 @@ function submitVoice(file) {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': file.type,
-            'X-Api-Key': 'VF4Y2lXaWy7EvtuTZrrCW8R7UoNgUx2SzpcDFkQ4',
+            // 'X-Api-Key': 'VF4Y2lXaWy7EvtuTZrrCW8R7UoNgUx2SzpcDFkQ4',
             'timeout': 300000
         }
     }
-    var url = "https://cors-anywhere.herokuapp.com/https://dzwptd01uf.execute-api.us-east-1.amazonaws.com/gamma/photos/hw3-photos-bucket-b2/" + file_name
+    // https://cors-anywhere.herokuapp.com/https://dzwptd01uf.execute-api.us-east-1.amazonaws.com/gamma/photos/hw3-photos-bucket-b2/ 
+    var url = "https://cors-anywhere.herokuapp.com/https://af1rese0zd.execute-api.us-east-1.amazonaws.com/dev/upload/awstranscribe-recordings/" + file_name
     axios.put(url, file, additionalParams).then(function(response) {
 
         var params = {
             'q': 'searchAudio',
         };
-
-        var get_url = "https://cors-anywhere.herokuapp.com/https://dzwptd01uf.execute-api.us-east-1.amazonaws.com/gamma/search";
+        // https://cors-anywhere.herokuapp.com/https://dzwptd01uf.execute-api.us-east-1.amazonaws.com/gamma/search
+        var get_url = "https://cors-anywhere.herokuapp.com/https://af1rese0zd.execute-api.us-east-1.amazonaws.com/dev/search";
+        
 
         apigClient.searchGet(params, {}, {'timeout': 300000}).then(function (result) {
                 checkResponse(result);
