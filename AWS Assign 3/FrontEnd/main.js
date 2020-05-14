@@ -43,9 +43,10 @@ function submitVoice(file) {
     var additionalParams = {
         headers: {
             'Access-Control-Allow-Origin': '*',
+            // 'Access-Control-Allow-Headers':'Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with',
             'Content-Type': file.type,
             // 'X-Api-Key': 'VF4Y2lXaWy7EvtuTZrrCW8R7UoNgUx2SzpcDFkQ4',
-            'timeout': 300000
+            'timeout': 600000
         }
     }
     // https://cors-anywhere.herokuapp.com/https://dzwptd01uf.execute-api.us-east-1.amazonaws.com/gamma/photos/hw3-photos-bucket-b2/ 
@@ -56,10 +57,10 @@ function submitVoice(file) {
             'q': 'searchAudio',
         };
         // https://cors-anywhere.herokuapp.com/https://dzwptd01uf.execute-api.us-east-1.amazonaws.com/gamma/search
-        var get_url = "https://cors-anywhere.herokuapp.com/https://af1rese0zd.execute-api.us-east-1.amazonaws.com/dev/search";
+        // var get_url = "https://cors-anywhere.herokuapp.com/https://af1rese0zd.execute-api.us-east-1.amazonaws.com/dev/search";
         
 
-        apigClient.searchGet(params, {}, {'timeout': 300000}).then(function (result) {
+        apigClient.searchGet(params, {}, {'timeout': 600000}).then(function (result) {
                 checkResponse(result);
             }).catch(function (result) {
                 console.log('wait... still searching')
@@ -79,7 +80,8 @@ function submitVoice(file) {
         params = {
              'q': 'getAudio',
         }
-        apigClient.searchGet(params, {}, {'timeout': 300000}).then(function (result) {
+        apigClient.searchGet(params, {}, {'timeout': 600000}).then(function (result) {
+                console.log("checkresponse result",result)
                 checkResponse(result);
                 alert('Search successful!');
             }).catch(function (result) {
@@ -93,7 +95,7 @@ function submitVoice(file) {
 function checkResponse(result) {
     console.log(result);
     if (result["data"]) {
-        img_paths = result["data"]["imagePaths"];
+        img_paths = result["data"]["body"]["imagePaths"];
         var div = document.getElementById("imgDiv");
         div.innerHTML = "";
 
