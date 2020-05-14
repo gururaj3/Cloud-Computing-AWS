@@ -20,7 +20,7 @@ greeting.
 
 ## Architecture
 
-<img alt="Architecture" src="Images/Architecture.png">
+<img alt="Architecture" src="Images/Architecture.PNG">
 
 
 ## Steps
