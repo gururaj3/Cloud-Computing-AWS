@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://7vo59f224a.execute-api.us-east-1.amazonaws.com/dev';
+    var invokeUrl = 'https://ap711746w1.execute-api.us-east-1.amazonaws.com/dev';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -83,57 +83,57 @@ apigClientFactory.newClient = function (config) {
     
     
     
-    apigClient.lfa2Options = function (params, body, additionalParams) {
+    apigClient.kds1wp1Options = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var lfa2OptionsRequest = {
+        var kds1wp1OptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/lfa2').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/kds1wp1').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(lfa2OptionsRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(kds1wp1OptionsRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.visitordataPost = function (params, body, additionalParams) {
+    apigClient.visitorPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
-        console.log(body)
+        
         apiGateway.core.utils.assertParametersDefined(params, ['body'], ['body']);
         
-        var visitordataPostRequest = {
+        var visitorPostRequest = {
             verb: 'post'.toUpperCase(),
-            path: pathComponent + uritemplate('/visitordata').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/visitor').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(visitordataPostRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(visitorPostRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.visitordataOptions = function (params, body, additionalParams) {
+    apigClient.visitorOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var visitordataOptionsRequest = {
+        var visitorOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/visitordata').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/visitor').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(visitordataOptionsRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(visitorOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
 
